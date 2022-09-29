@@ -280,16 +280,16 @@
 		border-radius: 4px;
 	}
 
-	.main-flash-sale .slide{
+	.slide{
 		white-space: nowrap;
 		overflow: hidden;
 	}
 
-	.main-flash-sale .slide:hover{
+	.slide:hover{
 		cursor: pointer;
 	}
 
-	.main-flash-sale .slide:active{
+	.slide:active{
 		cursor: grabbing;
 	}
 
@@ -308,11 +308,11 @@
 		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
 	}
 
-	.main-flash-sale .slide .item:nth-last-child(1){
+	.slide .item:nth-last-child(1){
 		margin-right: 2px;
 	}
 
-	.main-flash-sale .slide .item:nth-child(1){
+	.slide .item:nth-child(1){
 		margin-left: 2px;
 	}
 
@@ -330,7 +330,7 @@
 		color: #3c3c3c;
 		margin-bottom: -4px;
 	}
-	
+
 	.main-flash-sale .slide .item .price .after
 	, .main-product-list .item .price .after{
 		font-size: 1.1rem;
@@ -355,6 +355,21 @@
 		background: white;
 		text-align: center;
 		width: 100%;
+		height: 320px;
+		padding: 8px 0px;
+		border-radius: 8px;
+		margin: 4px 16px 4px 0px;
+		display: inline-block;
+		-webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+	}
+
+	.customers .slide .item{
+		background: white;
+		width: 49.5%;
+		text-align: center;
 		height: 320px;
 		padding: 8px 0px;
 		border-radius: 8px;
@@ -556,6 +571,8 @@
 					<!-- * Category -->
 					<div class="customers col-xl-12 mt-1">
 						<div class="slide">
+							<div class="item"></div>
+							<div class="item"></div>
 							<div class="item"></div>
 						</div>
 					</div>
