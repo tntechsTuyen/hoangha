@@ -280,20 +280,20 @@
 		border-radius: 4px;
 	}
 
-	.product-list{
+	.main-flash-sale .slide{
 		white-space: nowrap;
 		overflow: hidden;
 	}
 
-	.product-list:hover{
+	.main-flash-sale .slide:hover{
 		cursor: pointer;
 	}
 
-	.product-list:active{
+	.main-flash-sale .slide:active{
 		cursor: grabbing;
 	}
 
-	.product-list .product-item{
+	.main-flash-sale .slide .item{
 		background: white;
 		width: 220px;
 		text-align: center;
@@ -308,34 +308,65 @@
 		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
 	}
 
-	.product-list .product-item:nth-last-child(1){
+	.main-flash-sale .slide .item:nth-last-child(1){
 		margin-right: 2px;
 	}
 
-	.product-list .product-item:nth-child(1){
+	.main-flash-sale .slide .item:nth-child(1){
 		margin-left: 2px;
 	}
 
-	.product-list .product-item .name{
+	.main-flash-sale .slide .item .name{
 		font-size: .9rem;
 		font-weight: bold;
 		text-align: center;
 	}
 
-	.product-list .product-item .price .before{
+	.main-flash-sale .slide .item .price .before
+	, .main-product-list .item .price .before{
 		font-size: .7rem;
 		text-decoration: line-through;
 		text-align: center;
 		color: #3c3c3c;
 		margin-bottom: -4px;
 	}
-	.product-list .product-item .price .after{
+	
+	.main-flash-sale .slide .item .price .after
+	, .main-product-list .item .price .after{
 		font-size: 1.1rem;
 		font-weight: bold;
 		text-align: center;
 		color: #FD475A;
 	}
 	/*========== * Main Flash Sale ==========*/
+
+	/*========== Main Product List ==========*/
+	.main-product-list .cate{
+		background: #292929;
+		width: 230px;
+		text-align: center;
+		padding: 9px 0px;
+		color: white;
+		border-radius: 10px;
+		font-weight: bold;
+	}
+
+	.main-product-list .item{
+		background: white;
+		text-align: center;
+		width: 100%;
+		height: 320px;
+		padding: 8px 0px;
+		border-radius: 8px;
+		margin: 4px 16px 4px 0px;
+		display: inline-block;
+		-webkit-user-select: none; /* Safari */
+		-ms-user-select: none; /* IE 10 and IE 11 */
+		user-select: none; /* Standard syntax */
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+	}
+	/*========== * Main Product List ==========*/
+
 </style>
 <body>
 	<header>
@@ -481,17 +512,58 @@
 						</div>
 					</div>
 					<div class="col-xl-12 mt-1">
-						<div class="products-slide">
-							<div class="product-list">
-							</div>
-							<!-- Button -->
-						</div>
+						<div class="slide"></div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!-- * Flash sale -->
+
+	<!-- Main Product -->
+	<section>
+		<div class="main-product-list">
+			<div class="container">
+				<div class="row">
+					<!-- Category -->
+					<div class="col-xl-12 mt-4">
+						<div class="cate">
+							Điện thoại nổi bật
+						</div>
+					</div>
+					<!-- * Category -->
+					<?php for($i = 0; $i < 12; $i++): ?>
+					<!-- Item -->
+					<div class="col-xl-2 mt-1">
+						<div class="item">
+							<img src="assets/img/iphone14promax.png" draggable="false" width="180px" height="225px">
+							<div>Iphone 14 Pro Max</div>
+							<div class="price">
+								<div class="before">33,900,000 đ</div>
+								<div class="after">38,900,000 đ</div>
+							</div>
+						</div>
+					</div>
+					<!-- * Item -->
+					<?php endfor; ?>
+
+					<!-- Category -->
+					<div class="col-xl-12 mt-4">
+						<div class="cate">
+							Khách hàng
+						</div>
+					</div>
+					<!-- * Category -->
+					<div class="customers col-xl-12 mt-1">
+						<div class="slide">
+							<div class="item"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- * Main Product -->
 
 	<footer class="mt-5">
 		
@@ -554,7 +626,7 @@
 			src: "assets/img/slide-2.jpg"
 		}
 	]
-	var products = [
+	var flashSale = [
 		{
 			name: "Iphone 14 Pro Max",
 			thumb: "assets/img/iphone14promax.png",
@@ -670,14 +742,14 @@
 	}
 
 	function loadFlashSale(){
-		for(var i = 0; i < products.length; i++){
-			$(".products-slide").find(".product-list").append(itemProduct(products[i]))
+		for(var i = 0; i < flashSale.length; i++){
+			$(".main-flash-sale .slide").append(itemFlashSale(flashSale[i]))
 		}
 	}
 
-	function itemProduct(data){
+	function itemFlashSale(data){
 		return `
-			<div class="product-item">
+			<div class="item">
 				<img src="${data.thumb}" width="180px" height="225px" draggable="false">
 				<div class="name">${data.name}</div>
 				<div class="price">
@@ -687,7 +759,7 @@
 			</div>`
 	}
 
-	const slider = document.querySelector('.product-list');
+	const slider = document.querySelector('.slide');
 	let mouseDown = false;
 	let startX, scrollLeft;
 
