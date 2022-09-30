@@ -2,6 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Test</title>
 	<link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap@5.1.3/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="assets/plugins/fontawesome@5.13/css/all.min.css">
@@ -228,7 +230,6 @@
 
 	.main-ads-slide .ads-item{
 		border-radius: 8px;
-		height: 160px;
 	}
 	/*========== * Main Ads Slide ==========*/
 
@@ -549,7 +550,7 @@
 					<!-- * Category -->
 					<?php for($i = 0; $i < 12; $i++): ?>
 					<!-- Item -->
-					<div class="col-xl-2 mt-1">
+					<div class="col-xl-2 col-sm-6 mt-1">
 						<div class="item">
 							<img src="assets/img/iphone14promax.png" draggable="false" width="180px" height="225px">
 							<div>Iphone 14 Pro Max</div>
@@ -582,6 +583,41 @@
 	</section>
 	<!-- * Main Product -->
 
+	<!-- Main Term -->
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-3">
+					<div>
+						<div class="icon"><i class="far fa-badge-check"></i></div>
+						<div class="text">
+							<div>Sản phẩm</div>
+							<div>chính hãng</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3">
+					<div>
+						<div class="icon"><i class="far fa-dolly"></i></div>
+						<div class="text">Miễn phí vận chuyển</div>
+					</div>
+				</div>
+				<div class="col-xl-3">
+					<div>
+						<div class="icon"><i class="far fa-user-headset"></i></div>
+						<div class="text">Hotline hỗ trợ</div>
+					</div>
+				</div>
+				<div class="col-xl-3">
+					<div>
+						<div class="icon"><i class="far fa-sync-alt"></i></div>
+						<div class="text">Thủ tục đổi trả</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- * Main Term -->
 	<footer class="mt-5">
 		
 	</footer>
@@ -776,30 +812,34 @@
 			</div>`
 	}
 
-	const slider = document.querySelector('.slide');
-	let mouseDown = false;
-	let startX, scrollLeft;
+	dragSlide(".main-flash-sale .slide")
+	dragSlide(".customers .slide")
+	function dragSlide(name){
+		const slider = document.querySelector(name);
+		let mouseDown = false;
+		let startX, scrollLeft;
 
-	let startDragging = function (e) {
-	  mouseDown = true;
-	  startX = e.pageX - slider.offsetLeft;
-	  scrollLeft = slider.scrollLeft;
-	};
-	let stopDragging = function (event) {
-	  mouseDown = false;
-	};
+		let startDragging = function (e) {
+		  mouseDown = true;
+		  startX = e.pageX - slider.offsetLeft;
+		  scrollLeft = slider.scrollLeft;
+		};
+		let stopDragging = function (event) {
+		  mouseDown = false;
+		};
 
-	slider.addEventListener('mousemove', (e) => {
-	  e.preventDefault();
-	  if(!mouseDown) { return; }
-	  const x = e.pageX - slider.offsetLeft;
-	  const scroll = x - startX;
-	  slider.scrollLeft = scrollLeft - scroll;
-	});
+		slider.addEventListener('mousemove', (e) => {
+		  e.preventDefault();
+		  if(!mouseDown) { return; }
+		  const x = e.pageX - slider.offsetLeft;
+		  const scroll = x - startX;
+		  slider.scrollLeft = scrollLeft - scroll;
+		});
 
-	// Add the event listeners
-	slider.addEventListener('mousedown', startDragging, false);
-	slider.addEventListener('mouseup', stopDragging, false);
-	slider.addEventListener('mouseleave', stopDragging, false);
+		// Add the event listeners
+		slider.addEventListener('mousedown', startDragging, false);
+		slider.addEventListener('mouseup', stopDragging, false);
+		slider.addEventListener('mouseleave', stopDragging, false);
+	}
 </script>
 </html>
