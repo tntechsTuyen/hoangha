@@ -200,7 +200,7 @@
 
 	.main-ads-slide .ads-slides .item-slide{
 		position: absolute;
-		width: 1296px;
+		width: 100%;
 		height: 100%;
 		top: 0;
 	}
@@ -780,7 +780,7 @@
 	}
 
 	function itemSlide(data, position){
-		var style = `style="left: ${position * 1296}px"`
+		var style = `style="left: ${position * $(".ads-slides").width()}px"`
 		return `<div class="item-slide" ${style}><img src="${data.src}" width="100%" height="100%"></div>`
 	}
 
